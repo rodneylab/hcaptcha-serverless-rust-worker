@@ -13,11 +13,9 @@
 
 [![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/rodneylab/hcaptcha-serverless-rust-worker)
 
-SvelteKit demo code for using Cloudflare Workers written in Rust to create an hCaptcha verification endpoint. The code accompanies the <a aria-label="Open Rodney Lab blog post on using Rust Cloud flare Workers" href="https://rodneylab.com/using-rust-cloudflare-workers/">article on tracking page views in SvelteKit </a>. If you have any questions, please drop a comment at the bottom of that page.
+SvelteKit demo code for using Cloudflare Workers written in Rust to create an hCaptcha verification endpoint. The code accompanies the <a aria-label="Open Rodney Lab blog post on using Rust Cloud flare Workers" href="https://rodneylab.com/using-rust-cloudflare-workers/">article on using rust in serverless Cloudflare workers</a>. If you have any questions, please drop a comment at the bottom of that page.
 
-## Building and previewing the site
-
-If you're seeing this, you've probably already done this step. Congrats!
+## Building and previewing the worker
 
 ```shell
 wrangler dev
