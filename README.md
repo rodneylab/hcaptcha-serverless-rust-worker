@@ -13,7 +13,7 @@
 
 [![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/rodneylab/hcaptcha-serverless-rust-worker)
 
-Cloudflare Worker written in Rust to create an hCaptcha verification endpoint.
+**Cloudflare Worker written in Rust to create an hCaptcha verification endpoint.**
 
 To learn how to code this up from scratch in Rust using wrangler, see the <a aria-label="Open Rodney Lab blog post on using Rust Cloud flare Workers" href="https://rodneylab.com/using-rust-cloudflare-workers/">article on using Rust in serverless Cloudflare workers</a>. If you have any questions, please drop a comment at the bottom of that page.
 
