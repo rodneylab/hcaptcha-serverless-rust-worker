@@ -94,7 +94,7 @@ That should be everything set up.
         const { response } = await hcaptcha.execute(hcaptchaWidgetID, {
           async: true,
         });
-        const responsePromise = fetch(\`\${workerUrl}/verify\`, {
+        const responsePromise = fetch(`${workerUrl}/verify`, {
           method: 'POST',
           credentials: 'omit',
           headers: {
@@ -106,7 +106,7 @@ That should be everything set up.
         });
       }
     } catch (error) {
-      console.error(\`Error in handleVerify: \${error}\`);
+      console.error(`Error in handleVerify: ${error}`);
     }
   }
 ```
