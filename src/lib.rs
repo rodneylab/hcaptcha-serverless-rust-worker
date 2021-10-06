@@ -93,7 +93,7 @@ pub async fn main(req: Request, env: Env) -> Result<Response> {
     // functionality and a `RouteContext` which you can use to  and get route parameters and
     // Environment bindings like KV Stores, Durable Objects, Secrets, and Variables.
     router
-        .options("/post/data", |req, ctx| {
+        .options("/verify", |req, ctx| {
             preflight_response(req.headers(), &ctx.var("CORS_ORIGIN")?.to_string())
         })
         .post_async("/verify", |mut req, ctx| async move {
