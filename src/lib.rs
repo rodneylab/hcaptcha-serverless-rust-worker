@@ -10,7 +10,7 @@ fn log_request(req: &Request) {
         Date::now().to_string(),
         req.path(),
         req.cf().coordinates().unwrap_or_default(),
-        req.cf().region().unwrap_or("unknown region".into())
+        req.cf().region().unwrap_or_else(|| "unknown region".into())
     );
 }
 
@@ -78,7 +78,7 @@ async fn verify_captcha(client_response: &str, secret: &str, sitekey: &str) -> O
 }
 
 #[event(fetch)]
-pub async fn main(req: Request, env: Env) -> Result<Response> {
+pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Response> {
     log_request(&req);
 
     // Optionally, get more helpful error messages written to the console in the case of a panic.
@@ -97,11 +97,10 @@ pub async fn main(req: Request, env: Env) -> Result<Response> {
             preflight_response(req.headers(), &ctx.var("CORS_ORIGIN")?.to_string())
         })
         .post_async("/verify", |mut req, ctx| async move {
-            let data: CaptchaRequest;
-            match req.json().await {
-                Ok(res) => data = res,
+            let data: CaptchaRequest = match req.json().await {
+                Ok(res) => res,
                 Err(_) => return Response::error("Bad request", 400),
-            }
+            };
             let hcaptcha_sitekey = ctx.var("HCAPTCHA_SITEKEY")?.to_string();
             let hcaptcha_secretkey = ctx.var("HCAPTCHA_SECRETKEY")?.to_string();
             match verify_captcha(&data.response, &hcaptcha_secretkey, &hcaptcha_sitekey).await {
